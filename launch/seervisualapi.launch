@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="next_seervisual_laser" pkg="next_seervisual" type="laser_push.py" output="screen">
+        <!-- <param name="ip" value="$(arg ip)"/> -->
+    </node>
+
+    <node name="next_seervisual_chassis" pkg="next_seervisual" type="chassis_push.py" output="screen">
+        <!-- <param name="ip" value="$(arg ip)"/> -->
+    </node>
+</launch>
