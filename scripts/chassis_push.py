@@ -72,26 +72,26 @@ class RobotChassisAPI_ros:
                                 elif p["key"] == "height":
                                     msg.rect_height = p["doubleValue"]
 
-                        elif child["key"] == "circle":
-                            msg.type = 1
-                            for p in child["params"]:
-                                if p["key"] == "radius":
-                                    msg.radius = p["doubleValue"]
-                                elif p["key"] == "height":
-                                    msg.circle_height = p["doubleValue"]
+                        # elif child["key"] == "circle":
+                        #     msg.type = 1
+                        #     for p in child["params"]:
+                        #         if p["key"] == "radius":
+                        #             msg.radius = p["doubleValue"]
+                        #         elif p["key"] == "height":
+                        #             msg.circle_height = p["doubleValue"]
 
-                        elif child["key"] == "polygon":
-                            msg.type = 2
-                            for p in child["params"]:
-                                if p["key"] == "polygon":
-                                    try:
-                                        pts = json.loads(p["stringValue"])
-                                        msg.poly_x = [pt["x"] for pt in pts]
-                                        msg.poly_y = [pt["y"] for pt in pts]
-                                    except Exception as e:
-                                        rospy.logwarn(f"Failed to parse polygon points: {e}")
-                                elif p["key"] == "height":
-                                    msg.poly_height = p["doubleValue"]
+                        # elif child["key"] == "polygon":
+                        #     msg.type = 2
+                        #     for p in child["params"]:
+                        #         if p["key"] == "polygon":
+                        #             try:
+                        #                 pts = json.loads(p["stringValue"])
+                        #                 msg.poly_x = [pt["x"] for pt in pts]
+                        #                 msg.poly_y = [pt["y"] for pt in pts]
+                        #             except Exception as e:
+                        #                 rospy.logwarn(f"Failed to parse polygon points: {e}")
+                        #         elif p["key"] == "height":
+                        #             msg.poly_height = p["doubleValue"]
 
             msg.ret_code = 0
             # rospy.loginfo(
@@ -116,7 +116,7 @@ class RobotChassisAPI_ros:
 
 def main(argv=sys.argv):
     rospy.init_node('next_seerchassis', anonymous=True)
-    ip = os.environ.get("ip", "127.0.0.1")  # fallback IP
+    ip = os.environ.get("ip", "192.168.1.100")
     rospy.loginfo(f"Using robot IP: {ip}")
     M = RobotChassisAPI_ros(ip)
     rate = rospy.Rate(1)

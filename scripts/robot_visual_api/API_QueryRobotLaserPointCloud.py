@@ -16,15 +16,17 @@ class QueryRobotLaserData():
 
     def __init__(self):
         self.success = False
-        self.api_port = API_PORT.API_PORT_ROBOT_STATUS_API.value
-        self.api_number = Msg_Type.robot_status_laser_req.value
+        # self.api_port = API_PORT.API_PORT_ROBOT_STATUS_API.value
+        # self.api_number = Msg_Type.robot_status_laser_req.value
+        self.api_port = 19204
+        self.api_number = 1009
 
 
 
 
     def req_QueryRobotLaserData(self):
         msg_dict = dict()
-        return {"api_port":19204, "api_number":1009, "data":msg_dict}
+        return {"api_port":self.api_port, "api_number":self.api_number, "data":msg_dict}
 
 a = QueryRobotLaserData()
 print(a.req_QueryRobotLaserData())
